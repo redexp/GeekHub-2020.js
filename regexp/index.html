@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Regexp</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container p-5">
+	<form id="user-form">
+		<div class="form-group">
+			<label>П.І.Б.</label>
+			<input type="text" name="full_name" class="form-control"/>
+			<small class="form-text text-muted">Обовʼязково прізвище, імʼя та по батькові. Тільки літерами українскього алфавіту</small>
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input type="text" name="email" class="form-control"/>
+			<small class="form-text text-muted">Адреса електронної пошти</small>
+		</div>
+		<div class="form-group">
+			<label>Пароль</label>
+			<input type="password" name="password" class="form-control"/>
+			<small class="form-text text-muted">Мінімум 8 літер. Обовʼязково повинні бути великі та малі літери англійського алфавіту та числа</small>
+		</div>
+
+		<div class="form-group">
+			<div class="btn-group">
+				<button data-show="description" type="button" class="btn btn-light active">Опис</button>
+				<button data-show="preview" type="button" class="btn btn-light">Перегляд</button>
+			</div>
+
+			<textarea id="description" name="description" class="form-control" rows="4"></textarea>
+
+			<div id="preview" class="card card-body d-none">
+
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
