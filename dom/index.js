@@ -7,8 +7,12 @@ jQuery('input').on('paste', function (e) {
 
 });
 
-jQuery('th').on('contextmenu', function (e) {
+var currentColumn;
+
+jQuery('thead th').on('contextmenu', function (e) {
 	e.preventDefault();
+
+	currentColumn = e.currentTarget;
 
 	var menu = jQuery('#column-menu');
 
