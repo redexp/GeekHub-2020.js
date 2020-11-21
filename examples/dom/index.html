@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM, jQuery</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<table>
+	<thead>
+	<tr>
+		<th>&nbsp;</th>
+		<th>A</th>
+		<th>B</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>1</th>
+		<td><input type="text" name="a1" value=""/></td>
+		<td><input type="text" name="b1" value=""/></td>
+	</tr>
+	<tr>
+		<th>2</th>
+		<td><input type="text" name="a2" value=""/></td>
+		<td><input type="text" name="b2" value=""/></td>
+	</tr>
+	</tbody>
+</table>
+
+<div id="column-menu" class="dropdown-menu">
+	<a data-action="add-left" class="dropdown-item" href="#">Додати стовпець зліва</a>
+	<a data-action="add-right" class="dropdown-item" href="#">Додати стовпець зправа</a>
+	<div class="dropdown-divider"></div>
+	<a data-action="remove" class="dropdown-item" href="#">Видалити стовпець</a>
+</div>
+
+<div id="row-menu" class="dropdown-menu">
+	<a data-action="add-above" class="dropdown-item" href="#">Додати рядок вище</a>
+	<a data-action="add-under" class="dropdown-item" href="#">Додати рядок нижче</a>
+	<div class="dropdown-divider"></div>
+	<a data-action="remove" class="dropdown-item" href="#">Видалити рядок</a>
+</div>
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
