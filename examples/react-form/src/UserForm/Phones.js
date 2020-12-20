@@ -1,26 +1,61 @@
 import React, {PureComponent} from 'react';
+import cloneDeep from 'lodash/cloneDeep';
 import Input from './Input';
 
 export default class Phones extends PureComponent {
+	state = {
+		phones: cloneDeep(this.props.value)
+	};
+
+	onRemove = (item) => {
+		const {onChange} = this.props;
+
+		let phones = this.state.phones.filter(phone => phone !== item);
+
+		this.setState({phones});
+
+		onChange(phones);
+	};
+
+	onChange = (item, newItem) => {
+		const {onChange} = this.props;
+
+		let phones = [...this.state.phones];
+
+		phones[phones.indexOf(item)] = newItem;
+
+		this.setState({phones});
+
+		onChange(phones);
+	};
+
+	onAdd = () => {
+		const {onChange} = this.props;
+		let phones = [...this.state.phones, {number: '', type: 'home'}];
+		this.setState({phones});
+		onChange(phones);
+	};
+
 	render() {
-		const {label, value, valid, onChange, onRemove, onAdd} = this.props;
+		const {label, valid} = this.props;
+		const {phones} = this.state;
 
 		return (
 			<div className="form-group">
 				<label>{label}</label>
-				{value.map((item, i) => (
+				{phones.map((item, i) => (
 					<Phone
 						key={i}
 						number={item.number}
 						type={item.type}
 						valid={valid[i]}
-						index={i}
-						onChange={onChange}
-						onRemove={onRemove}
+						payload={item}
+						onChange={this.onChange}
+						onRemove={this.onRemove}
 					/>
 				))}
 
-				<button onClick={onAdd} type="button" className="btn btn-sm btn-success">Додати</button>
+				<button onClick={this.onAdd} type="button" className="btn btn-sm btn-success">Додати</button>
 			</div>
 		);
 	}
@@ -28,21 +63,21 @@ export default class Phones extends PureComponent {
 
 class Phone extends PureComponent {
 	onChangeNumber = (e) => {
-		const {type, index, onChange} = this.props;
+		const {type, payload, onChange} = this.props;
 
-		onChange(index, {type, number: e.currentTarget.value});
+		onChange(payload, {type, number: e.currentTarget.value});
 	};
 
 	onChangeType = (e) => {
-		const {number, index, onChange} = this.props;
+		const {number, payload, onChange} = this.props;
 
-		onChange(index, {number, type: e.currentTarget.value});
+		onChange(payload, {number, type: e.currentTarget.value});
 	};
 
 	onRemove = () => {
-		const {index, onRemove} = this.props;
+		const {payload, onRemove} = this.props;
 
-		onRemove(index);
+		onRemove(payload);
 	};
 
 	render() {

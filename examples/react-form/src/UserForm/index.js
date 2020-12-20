@@ -68,31 +68,8 @@ export default class UserForm extends PureComponent {
 		this.setState({[field]: value});
 	};
 
-	onChangePhone = (index, data) => {
-		let phones = [...this.state.phones];
-
-		phones[index] = {
-			...phones[index],
-			...data,
-		};
-
-		this.setState({phones});
-	};
-
-	onRemovePhone = (index) => {
-		let phones = [...this.state.phones];
-		let phonesValid = [...this.state.phonesValid];
-
-		phones.splice(index, 1);
-		phonesValid.splice(index, 1);
-
-		this.setState({phones, phonesValid});
-	};
-
-	onAddPhone = () => {
-		let phones = [...this.state.phones, {number: '', type: 'home'}];
-
-		this.setState({phones});
+	onChangePhones = (phones) => {
+		this.state.phones = phones;
 	};
 
 	render() {
@@ -134,9 +111,7 @@ export default class UserForm extends PureComponent {
 						label="Телефони"
 						value={phones}
 						valid={phonesValid}
-						onChange={this.onChangePhone}
-						onRemove={this.onRemovePhone}
-						onAdd={this.onAddPhone}
+						onChange={this.onChangePhones}
 					/>
 
 					<button type="submit" className="btn btn-primary">Submit</button>
